@@ -8,6 +8,10 @@ import { NotAuthorizedGuard } from '@app/auth/guards/not-authorized.guard';
 import { AuthorizedGuard } from '@app/auth/guards/authorized.guard';
 import { CoursesStoreService } from '@app/services/courses-store.service';
 import { CoursesService } from '@app/services/courses.service';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { effects, reducers } from './store';
+// import { Routes, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent, CourseInfoComponent],
@@ -15,8 +19,15 @@ import { CoursesService } from '@app/services/courses.service';
     BrowserModule,
     SharedModule,
     FontAwesomeModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects),
   ],
-  providers: [AuthorizedGuard, NotAuthorizedGuard, CoursesService, CoursesStoreService],
+  providers: [
+    AuthorizedGuard,
+    NotAuthorizedGuard,
+    CoursesService,
+    CoursesStoreService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

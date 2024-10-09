@@ -8,11 +8,9 @@ import {
 } from '@angular/forms';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { Author } from '@app/models/author.model';
 
-interface Author {
-  id: number;
-  name: string;
-}
+
 
 @Component({
   selector: 'app-course-form',
